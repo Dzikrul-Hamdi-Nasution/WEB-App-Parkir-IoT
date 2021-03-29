@@ -1,0 +1,45 @@
+/*Style NAVBAR*/
+body{
+    background: #66ccff;
+    font-family: 'Franklin Gothic Medium';
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+}
+.teks{
+    background-color: #1EA1F2;
+    border-radius: 6px;
+    font-size: 20px;
+    margin: 0 12px 0 12px;
+}
+.t-no {
+    font-family: 'Franklin Gothic Medium';
+    font-size: 18px;
+    border-radius: 3px;
+    margin-right: 10px;
+    color: white;
+    background-color: #1EA1F2;
+    height: 40px;
+    width: 90px;
+    margin-top: 20px;
+}
+.t-no-clicked{
+    font-family: 'Franklin Gothic Medium';
+    font-size: 18px;
+    border-radius: 3px;
+    margin-right: 10px;
+    color: white;
+    background-color: rgb(10, 190, 70);
+    height: 40px;
+    width: 90px;
+    margin-top: 20px;
+}
+.t-scan {
+    font-family: 'Franklin Gothic Medium';
+    font-size: 18px;
+    border-radius: 3px;
+    margin-right: 10px;
+    color: black;
+    background-color: #e6e6e6;
+    margin-top: 25px;
+}

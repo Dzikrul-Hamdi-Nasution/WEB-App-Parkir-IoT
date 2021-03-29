@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <s<script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.webcamqrcode.min.js"></script>
+        <!-- <script src="bootstrap/js/style.js"></script> -->
+
+        <link rel="stylesheet" href="barcode.css">
+        <title>Parkirin</title>
+
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <script src="jquery-2.1.4.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.t-scan').hide();
+                $('#Barcode').click(function() {
+                    writeData()
+                    $('.t-scan').show();
+
+                    
+                });
+            });
+        </script>
+</head>
+
+<body>
+    <div class="row"></div>
+    <div class="col" align="center">
+        <a href="panduan.html" class="btn btn-primary btn-lg t-no" role="button" aria-pressed="true">Panduan</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a href="#" class="btn btn-primary btn-lg t-no" id="Barcode" role="button" aria-pressed="true">------SIMULASI BARCODE------</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a href="kode.html" class="btn btn-primary btn-lg t-scan" role="button" aria-pressed="true">BUKA PORTAL</a>
+        
+    </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var config = {
+            apiKey: "AIzaSyDyHX9094kxAP5MNj2ijYF__NgqTEzaVQ0",
+            authDomain: "test-iot-kos.firebaseapp.com",
+            databaseURL: "https://test-iot-kos.firebaseio.com",
+            projectId: "test-iot-kos",
+            storageBucket: "test-iot-kos.appspot.com",
+            messagingSenderId: "921771159253",
+            appId: "1:921771159253:web:54601eebfc1483457bbc5c",
+            measurementId: "G-4L8R3C6J9J"
+        };
+        firebase.initializeApp(config);
+
+        function writeData() {
+            var messagesRef = firebase.database().ref();
+            firebase.auth().onAuthStateChanged(function(user) {
+                var user = firebase.auth().currentUser;
+                var email_id = user.email;
+                var res = email_id.split("@");
+                var pecah = res[0];
+                firebase.database().ref("User").child(pecah).child("Kode Parkir").update({
+                    Barcode: '1g34abfsd124',
+                    //email : email_id,
+                });
+                //alert('Simulasi Berhasil');
+                var userId = firebase.auth().currentUser.uid;
+                return firebase.database().ref("User").child(pecah).child("Kode Parkir").once('value').then(function(snapshot) {
+                    var username = (snapshot.val().username) ;
+                // ...
+                alert(username);
+                });
+            });
+        }
+    </script>
+
+    Scan QR Code untuk membuka Portal:
+    <br />
+    <script>
+        (function($) {
+            $('document').ready(function() {
+                $('#qrcodebox').WebcamQRCode({
+                    onQRCodeDecode: function(p_data) {
+                        $('#qrcode_result').html(p_data);
+                    }
+                });
+
+                $('#btn_start').click(function() {
+                    $('#qrcodebox').WebcamQRCode().start();
+                });
+
+                $('#btn_stop').click(function() {
+                    $('#qrcodebox').WebcamQRCode().stop();
+                }); 
+            });
+        })(jQuery);
+    </script>
+    <div style="width: 400px; height: 400px;" id="qrcodebox">
+    </div>
+    <input type="button" value="Start" id="btn_start" />
+    <input type="button" value="Stop" id="btn_stop" />
+    <p>
+        QRCode value: <span id="qrcode_result">none</span>
+    </p>
+</body>
+
+</html>

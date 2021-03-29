@@ -1,0 +1,13 @@
+body{
+    background: #66ccff;
+    font-family: 'Franklin Gothic Medium';
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+}
+.teks{
+    background-color: #1EA1F2;
+    border-radius: 6px;
+    font-size: 20px;
+    margin: 20px 12px 0 12px;
+}

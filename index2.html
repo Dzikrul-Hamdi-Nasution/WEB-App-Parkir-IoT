@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+ 
+    <!-- <script src="bootstrap/js/style.js"></script> -->
+
+    <link rel="stylesheet" href="index2.css">
+    <title>Parkirin</title>
+
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="jquery-2.1.4.js"></script>
+    <script>
+        
+        var pengunci = 0;
+        var jenis_parkir = 0;
+        $(document).ready(function() {
+            $('.t-scan').hide();
+
+            $('#tombol1').click(function(){
+                if (pengunci==0){
+                    $('.t-scan').show();
+                    $('#tombol1').toggleClass('t-no-clicked');
+                    pengunci=1;
+                    jenis_parkir="A1"
+                    writeData()
+                }
+            });
+            $('#tombol2').click(function(){
+                if (pengunci==0){
+                    $('.t-scan').show();
+                    $('#tombol2').toggleClass('t-no-clicked');
+                    pengunci=1;
+                    jenis_parkir="A2"
+                    writeData()
+                }
+            });
+            $('#tombol3').click(function(){
+                if (pengunci==0){
+                    $('.t-scan').show();
+                    $('#tombol3').toggleClass('t-no-clicked');
+                    pengunci=1;
+                    jenis_parkir="A3"
+                    writeData()
+                }
+            });
+            $('#tombol4').click(function(){
+                if (pengunci==0){
+                    $('.t-scan').show();
+                    $('#tombol4').toggleClass('t-no-clicked');
+                    pengunci=1;
+                    jenis_parkir="A4"
+                    writeData()
+                }
+            });
+            $('#tombol5').click(function(){
+                if (pengunci==0){
+                    $('.t-scan').show();
+                    $('#tombol5').toggleClass('t-no-clicked');
+                    pengunci=1;
+                    jenis_parkir="B1"
+                    writeData()
+                }
+            });
+            $('#tombol6').click(function(){
+                if (pengunci==0){
+                    $('.t-scan').show();
+                    $('#tombol6').toggleClass('t-no-clicked');
+                    pengunci=1;
+                    jenis_parkir="B2"
+                    writeData()
+                }
+            });
+            $('#tombol7').click(function(){
+                if (pengunci==0){
+                    $('.t-scan').show();
+                    $('#tombol7').toggleClass('t-no-clicked');
+                    pengunci=1;
+                    jenis_parkir="B3"
+                    writeData()
+                }
+            });
+            $('#tombol8').click(function(){
+                if (pengunci==0){
+                    $('.t-scan').show();
+                    $('#tombol8').toggleClass('t-no-clicked');
+                    pengunci=1;
+                    jenis_parkir="B4"
+                    writeData()
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light" style="height: 60px;">
+            <div class="container text">
+              <a class="navbar-brand" href="#halaman-utama">
+                <img src="assets/img/fixdy.png" width="90" height="40" alt="logo fixdy">
+              </a>
+              <img src="assets/img/orang.jpg" class="rounded-circle float-left" width="40px" alt="icon">
+            </div>
+        </nav><br><br><br>
+
+        <div class="container">
+        <div class="teks">
+            Masuklah ke lokasi dengan nomor yang sudah anda pilih
+        </div>
+        <a href="panduan.html" class="btn btn-primary btn-lg t-no" role="button" aria-pressed="true">Panduan</a>
+        <div class="row">
+            <div class="col" align="center">
+                <a href="#" class="btn btn-primary btn-lg t-no" id="tombol4" role="button" aria-pressed="true">A4</a><br>
+                <a href="#" class="btn btn-primary btn-lg t-no" id="tombol3" role="button" aria-pressed="true">A3</a><br>
+                <a href="#" class="btn btn-primary btn-lg t-no" id="tombol2" role="button" aria-pressed="true">A2</a><br>
+                <a href="#" class="btn btn-primary btn-lg t-no" id="tombol1" role="button" aria-pressed="true">A1</a><br>
+            </div>
+            <div class="col" align="center">
+                <a href="#" class="btn btn-primary btn-lg t-no" id="tombol8" role="button" aria-pressed="true">B4</a><br>
+                <a href="#" class="btn btn-primary btn-lg t-no" id="tombol7" role="button" aria-pressed="true">B3</a><br>
+                <a href="#" class="btn btn-primary btn-lg t-no" id="tombol6" role="button" aria-pressed="true">B2</a><br>
+                <a href="#" class="btn btn-primary btn-lg t-no" id="tombol5" role="button" aria-pressed="true">B1</a><br>
+            </div>
+        </div>
+        <br>
+        <div class="col" align="center">
+            <a href="barcode.html" class="btn btn-primary btn-block t-scan" role="button" aria-pressed="true">SCAN DAN BUKA GERBANG</a>
+        </div>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var config = {
+            apiKey: "AIzaSyDyHX9094kxAP5MNj2ijYF__NgqTEzaVQ0",
+            authDomain: "test-iot-kos.firebaseapp.com",
+            databaseURL: "https://test-iot-kos.firebaseio.com",
+            projectId: "test-iot-kos",
+            storageBucket: "test-iot-kos.appspot.com",
+            messagingSenderId: "921771159253",
+            appId: "1:921771159253:web:54601eebfc1483457bbc5c",
+            measurementId: "G-4L8R3C6J9J"
+        };
+        firebase.initializeApp(config);
+        function writeData() {
+            var messagesRef = firebase.database().ref();
+            firebase.auth().onAuthStateChanged(function(user) {
+                var user = firebase.auth().currentUser;
+                var email_id = user.email;             
+                var res = email_id.split("@");
+                var pecah = res[0];   
+                firebase.database().ref("User").child(pecah).child("Kode Parkir").update({
+                    parkir: jenis_parkir,
+                   //email : email_id,
+                });
+                alert('The user is created successfully!');		
+            });	
+        }
+        
+      
+		
+    </script>
+
+
+</body>
+
+</html>
